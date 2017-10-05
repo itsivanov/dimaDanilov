@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model.php';
+require_once 'config.php';
 
 
 $query = "SELECT * FROM city";
