@@ -11,8 +11,10 @@ include_once 'config.php';
 $limit = intval($_POST['number']);
 
 $pdo = $GLOBALS['DB'];
-$stm = $pdo->prepare('SELECT * FROM city LIMIT 1 OFFSET ?');
+$stm = $pdo->prepare('SELECT `name` FROM city LIMIT 1 OFFSET ?');
 $stm->bindValue(1, $limit , PDO::PARAM_INT);
 $stm->execute();
-$response = $stm->fetchAll();
-echo $response[0]['name'];
+$response = $stm->fetch();
+
+if (isset($response['name']))
+    echo $response['name'];
